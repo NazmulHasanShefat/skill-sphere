@@ -1,19 +1,20 @@
-resorce: https://preview.themeforest.net/item/edumall-lms-education-wordpress-theme/full_screen_preview/29240444
+# Skill Sphere A modern online learning platform
+A modern online learning platform where users can explore courses, watch lessons, and enroll in skill-based programs like Web Development, Design, Marketing, and more.
 
-demo url 2
-https://preview.themeforest.net/item/edumove-education-lms-html-template/full_screen_preview/61221409
+# Authentication
+We use better auth for Authentication and authrization
 
-```js
-   validate={(value) => {
-              if (value.length < 8) {
-                return "Password must be at least 8 characters";
-              }
-              if (!/[A-Z]/.test(value)) {
-                return "Password must contain at least one uppercase letter";
-              }
-              if (!/[0-9]/.test(value)) {
-                return "Password must contain at least one number";
-              }
-              return null;
-            }}
-```
+# Features
+- user can see top rated courses
+- When user navigate courses page user can see all courses abilable in the platform
+- user can login or register in this website user have a profile page
+- protected route when user logind user can see details page
+- added some cool animation use motion library
+- this platform have social signIn funcanality
+
+# Technology Stack
+- Next js
+- react 
+- javaScript
+- motion (library)
+- better auth (library) for Authentication and authrization
