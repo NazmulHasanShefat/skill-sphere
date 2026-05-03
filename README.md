@@ -18,3 +18,4 @@ We use better auth for Authentication and authrization
 - javaScript
 - motion (library)
 - better auth (library) for Authentication and authrization
+- react-toastify for show alert
