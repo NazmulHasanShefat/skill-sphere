@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { use } from "react";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 const DetailsContainer = ({ courseDetailsPromise, detailsId }) => {
   const courseDetail = use(courseDetailsPromise);
@@ -22,25 +23,92 @@ const DetailsContainer = ({ courseDetailsPromise, detailsId }) => {
         <h1 className="text-2xl md:text-4xl font-bold text-center md:text-left">
           {currentDetail?.title}
         </h1>
-        <div className="px-3 py-3">
+        <div className="px-3 py-3 flex items-center justify-between">
           <span className="py-1 text-xs px-2 border border-gray-200">
             {currentDetail?.category}
           </span>
+          
+           <div className="rattings flex justify-center items-center gap-2">
+                           {Number(currentDetail.rating) <= 1.9 ? (
+                             <>
+                               <FaStar size={20} color="orange" />
+                               <FaRegStar size={20} />
+                               <FaRegStar size={20} />
+                               <FaRegStar size={20} />
+                               <FaRegStar size={20} />
+                             </>
+                           ) : Number(currentDetail.rating) <= 2.9 ? (
+                             <>
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                               <FaRegStar size={20} />
+                               <FaRegStar size={20} />
+                               <FaRegStar size={20} />
+                             </>
+                           ) : Number(currentDetail.rating) <= 3.9 ? (
+                             <>
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                               <FaRegStar size={20} />
+                               <FaRegStar size={20} />
+                             </>
+                           ) : Number(currentDetail.rating) <= 4.9 ? (
+                             <>
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                               <FaRegStar size={20} />
+                             </>
+                           ) : Number(currentDetail.rating) <= 5 ? (
+                             <>
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                               <FaStar size={20} color="orange" />
+                             </>
+                           ) : (
+                             ""
+                           )}
+                         </div>
+         
         </div>
         <div className="font-light pb-4 flex  items-center justify-between gap-2 px-3 py-3">
           <div className="flex items-center gap-3">
             <div>
               <Image
-                src={"/instructor.jpeg"}
+                src={currentDetail?.instructorImage || "/placeholderImage.jpg"}
                 width={30}
                 height={30}
                 alt="avater"
                 className="rounded-full"
               />
             </div>{" "}
-            <h3>Mechile torer</h3>
+            <h3> {currentDetail?.instructor} </h3>
           </div>
-          <h2 className="font-bold"> {currentDetail?.rating} </h2>
+          <h2 className="font-bold"> {currentDetail?.rating.toFixed(1)} </h2>
+        </div>
+        <div className="flex font-semibold text-lg items-center justify-between px-3">
+          <p>duration</p>
+          <p>{currentDetail?.duration}</p>
+        </div>
+        <div className="flex font-semibold text-lg items-center justify-between px-3">
+          <p> Lavel </p>
+          <p>{currentDetail?.level}</p>
+        </div>
+        <div className="flex font-semibold text-lg items-center justify-between px-3">
+          <p> Category </p>
+          <p>{currentDetail?.category}</p>
+        </div>
+        <div className="flex font-semibold text-lg items-center justify-between px-3">
+          <p> Students </p>
+          <p>{currentDetail?.students}</p>
+        </div>
+        <div className="flex flex-col mb-5 font-semibold text-lg items-center justify-between px-3">
+          <p> About instructor </p>
+          <p>{currentDetail?.about_instructor}</p>
         </div>
 
         <p className="px-3 pb-2">{currentDetail?.description}</p>
