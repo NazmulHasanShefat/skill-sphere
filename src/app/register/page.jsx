@@ -35,7 +35,7 @@ const RegisterPage = () => {
     }
     if(data){
       console.log(`register successfull`,data)
-        window.location.assign("/login");
+      window.location.assign("/login");
     }
   };
 

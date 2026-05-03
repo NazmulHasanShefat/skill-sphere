@@ -27,10 +27,10 @@ const LoginPage = () => {
       password: userData.password,
     });
     if (error) {
-      console.log(`register successfull`, error);
+      console.log(`login faild`, error);
     }
     if (data) {
-      console.log(`register successfull`, data);
+      console.log(`login successfully`, data);
       window.location.assign("/");
     }
   };
