@@ -16,10 +16,10 @@ const SignOutButton = () => {
     });
   };
   return (
-    <li className="cursor-pointer list-none" onClick={handleSignOut}>
+    <div className="cursor-pointer list-none" onClick={handleSignOut}>
       {" "}
       <FaSignOutAlt size={20} />
-    </li>
+    </div>
   );
 };
 

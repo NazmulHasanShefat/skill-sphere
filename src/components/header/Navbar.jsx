@@ -43,7 +43,8 @@ const Navbar = () => {
           <>
             <li className="flex items-center gap-3">
               {" "}
-              <UserProfile data={data} />
+             <Link href={"/profile"} >Profile</Link>
+             <UserProfile data={data} />
             </li>
             <SignOutButton />
           </>

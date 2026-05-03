@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import SignOutButton from "./SignOutButton";
@@ -64,10 +63,10 @@ const UserProfile = ({ data }) => {
                   email: <span> {data?.user?.email} </span>
                 </p>
                 <div className="buttons flex justify-between items-center gap-2 mt-3">
-                  <Link href={`/user-update?name=${data?.user?.name}&image=${data?.user?.image}`}>
-                    <button onClick={handleUpdateUser} className="bg-blue-500 text-white px-2 py-1 cursor-pointer text-xs">
+                  <Link onClick={handleUpdateUser} href={`/user-update?name=${data?.user?.name}&image=${data?.user?.image}`}>
+                    <span  className="bg-blue-500 text-white px-2 py-1 cursor-pointer text-xs">
                       Update profile
-                    </button>
+                    </span>
                   </Link>
                   <SignOutButton />
                 </div>
