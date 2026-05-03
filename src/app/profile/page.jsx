@@ -24,7 +24,7 @@ const ProfilePage = () => {
             />
           ) : (
             <Image
-              src={data?.user?.image}
+              src={`/placeholderImage.jpg`}
               width={100}
               height={100}
               alt={data?.user?.name || "user avater"}

@@ -1,7 +1,6 @@
 "use client";
 import {
   Button,
-  Description,
   FieldError,
   Form,
   Input,
@@ -11,6 +10,8 @@ import {
 
 import { use, useState } from "react";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 
 const UpdateUser = ({ searchParams }) => {
@@ -21,12 +22,14 @@ const UpdateUser = ({ searchParams }) => {
     name: myParams.name,
     image: myParams.image,
   });
+  const [pending, setPending] = useState(false);
 
   console.log(name);
   console.log(image);
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setPending(true)
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
     console.log(userData);
@@ -35,11 +38,14 @@ const UpdateUser = ({ searchParams }) => {
       image: userData.imageUrl,
     });
     if (error) {
-      console.log(`register successfull`, error);
+      toast.error(error.message)
+      setPending(false)
+      return
     }
     if (data) {
-      console.log(`register successfull`, data);
-      window.location.assign("/");
+      toast.success("User Updated Successfully")
+      setPending(false)
+      redirect("/")
     }
   };
 
@@ -83,7 +89,7 @@ const UpdateUser = ({ searchParams }) => {
           </TextField>
 
           <div className="flex gap-2">
-            <Button type="submit">Submit</Button>
+            <Button type="submit"> {pending ? "Updating...": "Update"} </Button>
             <Button type="reset" variant="secondary">
               Reset
             </Button>
