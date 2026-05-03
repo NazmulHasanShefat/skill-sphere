@@ -48,19 +48,19 @@ const MenuButton = () => {
         </Link>
         {session ? (
           <>
-            <div className="flex items-center justify-center pb-4">
+       
               <Link
                 onClick={handleOpenMenu}
                 href={"/profile"}
-                className={`mt-15 text-lg font-semibold px-4 py-2 ${currentPath === "/profile" ? "bg-blue-500 text-white" : "text-black bg-white"} rounded-lg`}
+                className={`text-lg font-semibold px-4 py-2 ${currentPath === "/profile" ? "bg-blue-500 text-white" : "text-black bg-white"} rounded-lg`}
               >
                 profile
               </Link>
-            </div>
+            
 
             <button
               type="button"
-              className="bg-blue-500 text-white hover:bg-blue-600 cursor-pointer py-2 px-4"
+              className="bg-blue-500 rounded-xl text-white hover:bg-blue-600 cursor-pointer py-2 px-4"
             >
               logiout
             </button>
