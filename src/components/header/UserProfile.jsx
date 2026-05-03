@@ -4,6 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
+import SignOutButton from "./SignOutButton";
 
 const UserProfile = ({ data }) => {
   const [showProfileModal, setShowProfileModal] = useState(false);
@@ -14,6 +15,7 @@ const UserProfile = ({ data }) => {
   const handleUpdateUser = () => {
     setShowProfileModal(false);
   };
+  console.log(data)
 
   return (
     <>
@@ -37,19 +39,23 @@ const UserProfile = ({ data }) => {
               <IoCloseSharp size={25} />{" "}
             </button>
             <div className="flex flex-col items-center text-center justify-start mt-5 gap-5">
-              {data?.user?.image && (
+              {data?.user?.image ? (
                 <Image
-                  src={
-                    (data?.user?.image).slice(0, 21) == "https://i.ibb.co.com/"
-                      ? data?.user?.image
-                      : "/placeholderImage.jpg"
-                  }
+                  src={(data?.user?.image)}
                   width={100}
                   height={100}
                   alt={data?.user?.name || "user avater"}
                   className="w-[80px] h-[80px] rounded-full mt-5 object-cover"
                 />
-              )}
+              ) : 
+               <Image
+                  src={(data?.user?.image)}
+                  width={100}
+                  height={100}
+                  alt={data?.user?.name || "user avater"}
+                  className="w-[80px] h-[80px] rounded-full mt-5 object-cover"
+                />
+              }
               <div className="details">
                 <p className="text-base">
                   Name: <span> {data?.user?.name} </span>
@@ -57,15 +63,13 @@ const UserProfile = ({ data }) => {
                 <p className="text-base">
                   email: <span> {data?.user?.email} </span>
                 </p>
-                <div className="buttons flex items-center gap-2 mt-3">
+                <div className="buttons flex justify-between items-center gap-2 mt-3">
                   <Link href={`/user-update?name=${data?.user?.name}&image=${data?.user?.image}`}>
                     <button onClick={handleUpdateUser} className="bg-blue-500 text-white px-2 py-1 cursor-pointer text-xs">
                       Update profile
                     </button>
                   </Link>
-                  <button className="bg-red-500 text-white px-2 py-1 cursor-pointer text-xs">
-                    Logout
-                  </button>
+                  <SignOutButton />
                 </div>
               </div>
             </div>

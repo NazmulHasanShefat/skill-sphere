@@ -71,9 +71,12 @@ const Navbar = () => {
         )}
       </ul>
       <div className="md:hidden flex items-center gap-3">
- 
+        {data ? 
+        isPending ? "loding...": 
           <UserProfile data={data}/>
-      
+         :
+        ""        
+         }
         <MenuButton />
       </div>
     </nav>
