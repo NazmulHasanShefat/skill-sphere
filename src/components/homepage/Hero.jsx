@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "motion/react";
+import { redirect } from "next/navigation";
 
 export default function Hero() {
   return (
@@ -25,7 +26,7 @@ export default function Hero() {
             Explore expert-led courses in Web Development, Design, Marketing and
             more. Watch lessons at your own pace
           </motion.p>
-          <div className="out-features py-3 flex gap-3 w-full">
+          <div className="out-features flex-wrap py-3 flex gap-3 w-full">
             <span className="flex w-max items-center gap-2 bg-linear-to-r from-blue-950 to-blue-800 ring-1 text-xs text-white font-light ring-blue-500 py-1 px-2 rounded-md">
               {" "}
               <div className="w-[10px] h-[10px] bg-white"></div> Marketing
@@ -41,6 +42,7 @@ export default function Hero() {
           </div>
           <div className="bannerButtons mt-5 flex items-center gap-3">
             <button
+             onClick={()=> redirect("/courses")}
               type="button"
               className="cursor-pointer hover:translate-x-0.5 transition-translate duration-200 bg-linear-to-r from-blue-700 to-blue-800 text-white shadow-xl px-4 py-2 rounded-xl font-semibold"
             >

@@ -60,7 +60,7 @@ const MenuButton = () => {
 
             <button
               type="button"
-              className="bg-blue-500 rounded-xl text-white hover:bg-blue-600 cursor-pointer py-2 px-4"
+              className="bg-blue-500 mt-3 rounded-xl text-white hover:bg-blue-600 cursor-pointer py-2 px-4"
             >
               logiout
             </button>
