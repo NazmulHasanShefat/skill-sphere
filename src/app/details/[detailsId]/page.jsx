@@ -1,11 +1,10 @@
-import { GetApiData } from '@/lib/GetData';
 import React, { Suspense } from 'react';
 import DetailsContainer from '../DetailsContainer';
+import { baseURL } from '@/components/baseURL';
 
 const DetailsPage = async ({params}) => {
     const { detailsId }= await params
-    console.log(detailsId)
-    const courseDetailsPromise = GetApiData("http://localhost:3000/courseData.json");
+     const  courseDetailsPromise = fetch(baseURL, { cache: "no-store" }).then((res)=> res.json());
     return (
 
         <section className='w-full max-w-7xl mx-auto px-5'>
