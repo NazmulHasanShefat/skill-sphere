@@ -1,0 +1,1 @@
+export const baseURL = "https://skill-sphere-rho-lyart.vercel.app/courseData.json"
