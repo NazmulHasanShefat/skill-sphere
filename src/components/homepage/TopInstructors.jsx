@@ -1,13 +1,10 @@
-import { GetApiData } from "@/lib/GetData";
-import { Card } from "@heroui/react";
-import Link from "next/link";
 import React, { Suspense } from "react";
 import { baseURL } from "../baseURL";
 import InstructorCard from "./InstructorCard";
 
 const TopInstructors =  () => {
     const instructorsPromise = fetch(baseURL, { cache: "no-store" }).then((res)=> res.json());
-    console.log(instructorsPromise)
+
 
   return (
     <section className="w-full max-w-7xl mx-auto px-5 mt-20">

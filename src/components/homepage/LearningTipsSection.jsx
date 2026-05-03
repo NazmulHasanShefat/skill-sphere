@@ -1,7 +1,6 @@
 import { Card } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
-import { FaCircleDollarToSlot } from "react-icons/fa6";
 const learningTips = [
   {
     id: 1,

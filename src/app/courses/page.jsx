@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import AllCourseCard from "./AllCourseCard";
-import { GetApiData } from "@/lib/GetData";
 import { baseURL } from "@/components/baseURL";
 import CardSkeleton from "@/components/homepage/cardSkaliton";
 

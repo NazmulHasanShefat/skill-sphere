@@ -8,10 +8,10 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { Switch } from "@heroui/react";
-import { use, useEffect, useState } from "react";
+
+import { use, useState } from "react";
 import { authClient } from "@/lib/auth-client";
-import SocialSignIn from "@/components/UI/SocialSignIn";
+
 
 const UpdateUser = ({ searchParams }) => {
   const myParams = use(searchParams);

@@ -1,4 +1,3 @@
-import { GetApiData } from "@/lib/GetData";
 import React, { Suspense } from "react";
 import CourseCard from "./CourseCard";
 import { baseURL } from "../baseURL";
@@ -7,7 +6,6 @@ const TopCourse = async () => {
   const populerCoursePromise = fetch(baseURL, { cache: "no-store" }).then(
     (res) => res.json(),
   );
-  console.log(populerCoursePromise);
   return (
     <section className="w-full max-w-7xl mx-auto px-5 mt-10">
       <h1 className="text-2xl md:text-5xl font-bold">
