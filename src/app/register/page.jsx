@@ -12,6 +12,7 @@ import { Switch } from "@heroui/react";
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import SocialSignIn from "@/components/UI/SocialSignIn";
+import { redirect } from "next/navigation";
 
 const RegisterPage = () => {
    const [isSelected, setIsSelected] = useState(false);
@@ -28,6 +29,7 @@ const RegisterPage = () => {
       email: userData.email,
       password: userData.password,
       image: userData.imageUrl,
+      callbackURL: "/login",
       autoSignIn: false,
     })
     if(error){
@@ -37,7 +39,7 @@ const RegisterPage = () => {
     if(data){
       console.log(`register successfull`,data)
       setPending(false)
-      window.location.assign("/login");
+      redirect("/login")
     }
   };
 

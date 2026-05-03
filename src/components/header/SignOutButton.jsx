@@ -1,15 +1,16 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import { Router } from "next/router";
+import { redirect } from "next/navigation";
 import React from "react";
 import { FaSignOutAlt } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const SignOutButton = () => {
   const handleSignOut = async () => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          window.location.assign("/login")
+          window.location.assign("/login");
         },
       },
     });

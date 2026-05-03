@@ -3,6 +3,7 @@ import HeroBannerMobile from "@/components/homepage/HeroBannerMobile";
 import LearningTipsSection from "@/components/homepage/LearningTipsSection";
 import TopCourse from "@/components/homepage/TopCourse";
 import TopInstructors from "@/components/homepage/TopInstructors";
+import { ToastContainer } from "react-toastify";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
    <TopCourse/>
    <LearningTipsSection />
    <TopInstructors />
+   <ToastContainer />
    </>
   );
 }
