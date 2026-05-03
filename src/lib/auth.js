@@ -7,23 +7,23 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 const client = new MongoClient(process.env.DB_URL);
 const db = client.db("skill-sphere");
 
-
 export const auth = betterAuth({
-   emailAndPassword: {    
-        enabled: true,
-        autoSignIn: false,
-    },
+  baseURL: process.env.BETTER_AUTH_URL,
+  emailAndPassword: {
+    enabled: true,
+    autoSignIn: false,
+  },
   database: mongodbAdapter(db, {
-    client
+    client,
   }),
-   socialProviders: { 
-        github: { 
-            clientId: process.env.GITHUB_CLIENT_ID, 
-            clientSecret: process.env.GITHUB_CLIENT_SECRET, 
-        },
-        google: { 
-            clientId: process.env.GOOGLE_CLIENT_ID, 
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
-        }
-    }, 
+  socialProviders: {
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    },
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    },
+  },
 });
