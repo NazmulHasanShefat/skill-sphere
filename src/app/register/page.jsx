@@ -8,8 +8,6 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 import { Switch } from "@heroui/react";
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
@@ -17,9 +15,11 @@ import SocialSignIn from "@/components/UI/SocialSignIn";
 
 const RegisterPage = () => {
    const [isSelected, setIsSelected] = useState(false);
+   const [isPending, setPending] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setPending(true)
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
     console.log(userData);
@@ -32,9 +32,11 @@ const RegisterPage = () => {
     })
     if(error){
       console.log(`faild to post signup`,error)
+      setPending(false)
     }
     if(data){
       console.log(`register successfull`,data)
+      setPending(false)
       window.location.assign("/login");
     }
   };
@@ -99,7 +101,7 @@ const RegisterPage = () => {
             </div>
           </TextField>
           <div className="flex gap-2">
-            <Button type="submit">Submit</Button>
+            <Button type="submit">{isPending ? "procicing...": "Register"}</Button>
             <Button type="reset" variant="secondary">
               Reset
             </Button>

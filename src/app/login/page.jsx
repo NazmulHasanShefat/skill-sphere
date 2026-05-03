@@ -15,9 +15,11 @@ import { useState } from "react";
 
 const LoginPage = () => {
   const [isSelected, setIsSelected] = useState(false);
+  const [isPending, setPending] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
+      setPending(true)
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
     console.log(userData);
@@ -28,9 +30,11 @@ const LoginPage = () => {
     });
     if (error) {
       console.log(`login faild`, error);
+        setPending(false)
     }
     if (data) {
       console.log(`login successfully`, data);
+        setPending(false)
       window.location.assign("/");
     }
   };
@@ -87,7 +91,7 @@ const LoginPage = () => {
             </div>
           </TextField>
           <div className="flex gap-2">
-            <Button type="submit">Submit</Button>
+            <Button type="submit"> {isPending ? "procecing..." : "Login"} </Button>
             <Button type="reset" variant="secondary">
               Reset
             </Button>
