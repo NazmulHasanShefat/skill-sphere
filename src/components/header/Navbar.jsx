@@ -12,7 +12,6 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
  const {data, isPending} = authClient.useSession();
  const currentPath = usePathname();
- console.log(currentPath)
 
   return (
     <nav className="px-5 py-5 flex justify-between items-center w-full max-w-[1280px] mx-auto">
