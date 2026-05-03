@@ -31,7 +31,7 @@ const RegisterPage = () => {
       autoSignIn: false,
     })
     if(error){
-      console.log(`register successfull`,error)
+      console.log(`faild to post signup`,error)
     }
     if(data){
       console.log(`register successfull`,data)
