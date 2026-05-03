@@ -8,13 +8,11 @@ import SignOutButton from "./SignOutButton";
 const UserProfile = ({ data }) => {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const openUserProfile = () => {
-    // console.log("hello")
     setShowProfileModal(!showProfileModal);
   };
   const handleUpdateUser = () => {
     setShowProfileModal(false);
   };
-  console.log(data)
 
   return (
     <>

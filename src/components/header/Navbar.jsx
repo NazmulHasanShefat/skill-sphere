@@ -7,9 +7,12 @@ import SignOutButton from "./SignOutButton";
 
 import UserProfile from "./UserProfile";
 import { authClient } from "@/lib/auth-client";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
  const {data, isPending} = authClient.useSession();
+ const currentPath = usePathname();
+ console.log(currentPath)
 
   return (
     <nav className="px-5 py-5 flex justify-between items-center w-full max-w-[1280px] mx-auto">
@@ -23,7 +26,7 @@ const Navbar = () => {
         <li>
           {" "}
           <Link
-            className="hover:text-blue-500 transition-colors duration-200"
+            className={`hover:text-blue-500 transition-colors duration-200 ${currentPath === "/" ? "text-blue-500": "text-black"}`}
             href={"/"}
           >
             Home
@@ -32,7 +35,7 @@ const Navbar = () => {
         <li>
           {" "}
           <Link
-            className="hover:text-blue-500 transition-colors duration-200"
+            className={`hover:text-blue-500 transition-colors duration-200 ${currentPath === "/courses" ? "text-blue-500": "text-black"}`}
             href={"/courses"}
           >
             Courses
@@ -41,7 +44,7 @@ const Navbar = () => {
 
         {data ? (
           <>
-            <li className="flex items-center gap-3">
+            <li className={`flex items-center gap-3 ${currentPath === "/profile" ? "text-blue-500": "text-black"}`}>
               {" "}
              <Link href={"/profile"} >Profile</Link>
              <UserProfile data={data} />
