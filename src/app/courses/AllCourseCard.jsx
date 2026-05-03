@@ -3,11 +3,23 @@ import Link from "next/link";
 import { use } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
-const AllCourseCard = ({ AllCoursePromise }) => {
+const AllCourseCard = ({ AllCoursePromise, searchFilterValue }) => {
   const courseDetails = use(AllCoursePromise);
+  const filterdCourse = ()=>{
+    if(searchFilterValue){
+      const filterdItem = courseDetails.filter((item)=> item.title.toLowerCase().includes(searchFilterValue.toLowerCase()) );
+      return  filterdItem
+    }else{
+      return courseDetails;
+    }
+  }
+  
+  const filterdItem = filterdCourse();
+  // console.log(courseDetails)
+
   return (
     <>
-      {courseDetails.map((course, index) => {
+      {filterdItem.map((course, index) => {
         return (
           <div
             key={index}
@@ -70,7 +82,7 @@ const AllCourseCard = ({ AllCoursePromise }) => {
               </div>
             </div>
             <h2 className="text-[20px] font-bold py-2">
-              Android App Development Using Java for Beginners
+              {course?.title}
             </h2>
             <div className="font-light pb-4 flex items-center gap-2">
               <div>
