@@ -13,33 +13,37 @@ import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import SocialSignIn from "@/components/UI/SocialSignIn";
 import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
-   const [isSelected, setIsSelected] = useState(false);
-   const [isPending, setPending] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
+  const [isPending, setPending] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setPending(true)
+    setPending(true);
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
     console.log(userData);
-    const {data, error} = await authClient.signUp.email({
+    const { data, error } = await authClient.signUp.email({
       name: userData.name,
       email: userData.email,
       password: userData.password,
       image: userData.imageUrl,
       callbackURL: "/login",
       autoSignIn: false,
-    })
-    if(error){
-      console.log(`faild to post signup`,error)
-      setPending(false)
+    });
+    if (error) {
+      setPending(false);
+      toast.error(error.message);
+      console.log(error);
+      return;
     }
-    if(data){
-      console.log(`register successfull`,data)
-      setPending(false)
-      redirect("/login")
+    if (data) {
+      toast.success("Registed successfully");
+      console.log(`register successfull`, data);
+      setPending(false);
+      redirect("/login");
     }
   };
 
@@ -97,13 +101,18 @@ const RegisterPage = () => {
                   <Switch.Thumb />
                 </Switch.Control>
                 <Switch.Content>
-                  <Label className="text-sm"> {isSelected ? "hide password" : "Show password"} </Label>
+                  <Label className="text-sm">
+                    {" "}
+                    {isSelected ? "hide password" : "Show password"}{" "}
+                  </Label>
                 </Switch.Content>
               </Switch>
             </div>
           </TextField>
           <div className="flex gap-2">
-            <Button type="submit">{isPending ? "procicing...": "Register"}</Button>
+            <Button type="submit">
+              {isPending ? "procicing..." : "Register"}
+            </Button>
             <Button type="reset" variant="secondary">
               Reset
             </Button>

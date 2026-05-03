@@ -12,6 +12,7 @@ import {
   TextField,
 } from "@heroui/react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [isSelected, setIsSelected] = useState(false);
@@ -19,7 +20,7 @@ const LoginPage = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-      setPending(true)
+    setPending(true);
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
     console.log(userData);
@@ -29,12 +30,13 @@ const LoginPage = () => {
       password: userData.password,
     });
     if (error) {
+      toast.error(error.message);
       console.log(`login faild`, error);
-        setPending(false)
+      setPending(false);
     }
     if (data) {
-      console.log(`login successfully`, data);
-        setPending(false)
+      toast.success("login successfull");
+      setPending(false);
       window.location.assign("/");
     }
   };
@@ -91,7 +93,10 @@ const LoginPage = () => {
             </div>
           </TextField>
           <div className="flex gap-2">
-            <Button type="submit"> {isPending ? "procecing..." : "Login"} </Button>
+            <Button type="submit">
+              {" "}
+              {isPending ? "procecing..." : "Login"}{" "}
+            </Button>
             <Button type="reset" variant="secondary">
               Reset
             </Button>

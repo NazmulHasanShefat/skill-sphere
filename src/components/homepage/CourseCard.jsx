@@ -28,7 +28,7 @@ const CourseCard = ({ populerCoursePromise }) => {
             />
             <div className="tags_ratting flex items-center justify-between mt-5">
               <div className="py-1 px-2 text-xs border border-gray-200">
-                Mobile development
+                {course?.level}
               </div>
               <div className="rattings flex justify-center items-center gap-2">
                 {Number(course.rating) <= 1.9 ? (
