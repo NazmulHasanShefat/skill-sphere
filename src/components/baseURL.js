@@ -1,1 +1,1 @@
-export const baseURL = "https://skill-sphere-rho-lyart.vercel.app/courseData.json"
+export const baseURL = "https://skill-sphere-hazel.vercel.app/courseData.json"
