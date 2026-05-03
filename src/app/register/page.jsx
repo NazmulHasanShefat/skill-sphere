@@ -15,6 +15,8 @@ import SocialSignIn from "@/components/UI/SocialSignIn";
 import { redirect } from "next/navigation";
 import { toast } from "react-toastify";
 
+
+
 const RegisterPage = () => {
   const [isSelected, setIsSelected] = useState(false);
   const [isPending, setPending] = useState(false);

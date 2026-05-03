@@ -13,7 +13,6 @@ import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 
-
 const UpdateUser = ({ searchParams }) => {
   const myParams = use(searchParams);
   const name = myParams.name;

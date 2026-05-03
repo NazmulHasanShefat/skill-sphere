@@ -5,6 +5,8 @@ import { baseURL } from "@/components/baseURL";
 import CardSkeleton from "@/components/homepage/cardSkaliton";
 import { SearchField } from "@heroui/react";
 
+
+
 const CoursesPage = () => {
   const [searchFilterValue, setSearchFilterValue] = useState(null);
   const AllCoursePromise = fetch(baseURL, { cache: "no-store" }).then((res) =>
