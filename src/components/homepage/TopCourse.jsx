@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import CourseCard from "./CourseCard";
 import { baseURL } from "../baseURL";
+import CardSkeleton from "./cardSkaliton";
 
 const TopCourse = async () => {
   const populerCoursePromise = fetch(baseURL, { cache: "no-store" }).then(
@@ -11,11 +12,11 @@ const TopCourse = async () => {
       <h1 className="text-2xl md:text-5xl font-bold">
         Most Popular <span className="text-blue-500">Courses</span>
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 mt-10 gap-10">
-        <Suspense fallback={<h2>loding...</h2>}>
+      <Suspense fallback={<CardSkeleton />}>
+        <div className="grid grid-cols-1 md:grid-cols-3 mt-10 gap-10">
           <CourseCard populerCoursePromise={populerCoursePromise} />
-        </Suspense>
-      </div>
+        </div> 
+      </Suspense>
     </section>
   );
 };

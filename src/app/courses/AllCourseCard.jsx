@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { use } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import { motion } from "motion/react";
 
 const AllCourseCard = ({ AllCoursePromise, searchFilterValue }) => {
   const courseDetails = use(AllCoursePromise);
@@ -21,7 +22,9 @@ const AllCourseCard = ({ AllCoursePromise, searchFilterValue }) => {
     <>
       {filterdItem.map((course, index) => {
         return (
-          <div
+          <motion.div
+            initial={{opacity:0}}
+            animate={{opacity:1}}
             key={index}
             className="course_card border border-gray-200 hover:border-blue-500 p-5 transition-colors duration-200 rounded-lg"
           >
@@ -102,7 +105,7 @@ const AllCourseCard = ({ AllCoursePromise, searchFilterValue }) => {
                 Vew Details
               </button>
             </Link>
-          </div>
+          </motion.div>
         );
       })}
     </>

@@ -1,19 +1,24 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { use } from "react";
+import { use, useRef } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import { motion } from "motion/react";
 
 const CourseCard = ({ populerCoursePromise }) => {
   const courseDetails = use(populerCoursePromise);
-  const topRatedCourse = courseDetails.filter((detail)=> Number(detail.rating) === Number(5.0) )
-
+  const topRatedCourse = courseDetails.filter(
+    (detail) => Number(detail.rating) === Number(5.0),
+  );
   return (
     <>
       {topRatedCourse.map((course, index) => {
         return (
-          <div
+          <motion.div
+            initial={{opacity:0}}
+            animate={{opacity: 1}}
             key={index}
-            className="course_card border border-gray-200 hover:border-blue-500 p-5 transition-colors duration-200 rounded-lg"
+            className={`course_card  border border-gray-200 hover:border-blue-500 p-5 transition-colors duration-200 rounded-lg`}
           >
             <Image
               src={course?.image}
@@ -74,18 +79,18 @@ const CourseCard = ({ populerCoursePromise }) => {
             <h2 className="text-[20px] font-bold py-2">
               Android App Development Using Java for Beginners
             </h2>
-              <div className="flex items-center justify-between">
-            <div className="font-light pb-4 flex items-center gap-2">
+            <div className="flex items-center justify-between">
+              <div className="font-light pb-4 flex items-center gap-2">
                 <div className="flex items-center">
-                <Image
-                  src={course?.instructorImage}
-                  width={30}
-                  height={30}
-                  alt="avater"
-                  className="rounded-full"
-                />
-              </div>{" "}
-              <h3>Mechile torer</h3>
+                  <Image
+                    src={course?.instructorImage}
+                    width={30}
+                    height={30}
+                    alt="avater"
+                    className="rounded-full"
+                  />
+                </div>{" "}
+                <h3>Mechile torer</h3>
               </div>
               <div className="rating font-bold">
                 {(course?.rating).toFixed(1)}
@@ -97,7 +102,7 @@ const CourseCard = ({ populerCoursePromise }) => {
                 Vew Details
               </button>
             </Link>
-          </div>
+          </motion.div>
         );
       })}
     </>
