@@ -1,11 +1,10 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
 import React from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
 
-const SignOutButton = () => {
+const SignOutButton = ({ className, children }) => {
   const handleSignOut = async () => {
     await authClient.signOut({
       fetchOptions: {
@@ -16,9 +15,12 @@ const SignOutButton = () => {
     });
   };
   return (
-    <div className="cursor-pointer list-none" onClick={handleSignOut}>
+    <div
+      className={`cursor-pointer list-none ${className}`}
+      onClick={handleSignOut}
+    >
       {" "}
-      <FaSignOutAlt size={20} />
+      {children ? children : <FaSignOutAlt size={20} />}
     </div>
   );
 };

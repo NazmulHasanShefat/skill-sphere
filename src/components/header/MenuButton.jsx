@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { RiMenu3Line } from "react-icons/ri";
+import SignOutButton from "./SignOutButton";
 
 const MenuButton = () => {
   const { data: session, isPending } = authClient.useSession();
@@ -48,22 +49,18 @@ const MenuButton = () => {
         </Link>
         {session ? (
           <>
-       
-              <Link
-                onClick={handleOpenMenu}
-                href={"/profile"}
-                className={`text-lg font-semibold px-4 py-2 ${currentPath === "/profile" ? "bg-blue-500 text-white" : "text-black bg-white"} rounded-lg`}
-              >
-                profile
-              </Link>
-            
-
-            <button
-              type="button"
-              className="bg-blue-500 mt-3 rounded-xl text-white hover:bg-blue-600 cursor-pointer py-2 px-4"
+            <Link
+              onClick={handleOpenMenu}
+              href={"/profile"}
+              className={`text-lg font-semibold px-4 py-2 ${currentPath === "/profile" ? "bg-blue-500 text-white" : "text-black bg-white"} rounded-lg`}
             >
-              logiout
-            </button>
+              profile
+            </Link>
+
+            <SignOutButton className={`px-4 flex items-center gap-3 text-lg font-semibold py-2`}>
+              <FaSignOutAlt size={20} className="mt-1"/>
+              Logout
+            </SignOutButton>
           </>
         ) : (
           <>
