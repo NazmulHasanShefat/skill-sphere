@@ -1,6 +1,9 @@
 # Skill Sphere A modern online learning platform
 A modern online learning platform where users can explore courses, watch lessons, and enroll in skill-based programs like Web Development, Design, Marketing, and more.
 
+# Live URL
+https://skill-sphere-hazel.vercel.app
+
 # Authentication
 We use better auth for Authentication and authrization
 
@@ -19,3 +22,16 @@ We use better auth for Authentication and authrization
 - motion (library)
 - better auth (library) for Authentication and authrization
 - react-toastify for show alert
+
+# Used npm packages
+```bash
+npx create-next-app@latest
+npm install better-auth
+npm i @heroui/styles @heroui/react
+npm i react-toastify
+npm i mongodb
+npm i motion
+npm i react-icons
+npm i @gravity-ui/icons
+
+```
